@@ -69,7 +69,7 @@ body {
   margin-bottom: 12px;
 }
 
-.diabetes {
+.diabete {
   color: #E63946;
   font-weight: bold;
 }
@@ -103,24 +103,24 @@ body {
 </div>
 
 <div id="legend">
-<h3>Legend</h3>
+<h3>Légende</h3>
 
 <div class="legend-item">
-<span class="diabetes">🩸 Diabetes</span><br>
-17.5% prevalence (20–79 years)<br>
-Source: IDF Diabetes Atlas 2025
+<span class="diabetes">🩸 Diabète</span><br>
+Prévalence : 17,5 % (20–79 ans)<br>
+Source : IDF Diabetes Atlas 2025
 </div>
 
 <div class="legend-item">
-<span class="hta">❤️ Hypertension</span><br>
-23.6% prevalence (18–69 years)<br>
-Source: WHO STEPS Survey
+<span class="hta">❤️ Hypertension artérielle</span><br>
+Prévalence : 23,6 % (18–69 ans)<br>
+Source : Enquête STEPwise (OMS)
 </div>
 
 <div class="legend-item">
-<span class="control">🎯 Blood Pressure Control</span><br>
-17.4% reached target BP<br>
-Source: PACT II Study (2021)
+<span class="control">🎯 Contrôle tensionnel</span><br>
+17,4 % des patients hypertendus atteignent la cible<br>
+Source : Étude PACT II (2021)
 </div>
 </div>
 
@@ -132,31 +132,30 @@ const data = [
   lng: 1.6596,
   size: 0.8,
   color: "#E63946",
-  label: `
-  <div style="font-size:18px;line-height:1.6;">
-    <h2>🇩🇿 Algeria</h2>
+label: `
+<div style="font-size:18px;line-height:1.6;">
+  <h2>🇩🇿 Algérie</h2>
 
-    <p>
-    <span style="color:#E63946;"><b>🩸 Diabetes</b></span><br>
-    Prevalence (20–79 years): <b>17.5%</b><br>
-    Source: IDF Diabetes Atlas 2025
-    </p>
+  <p>
+  <span style="color:#E63946;"><b>🩸 Diabète</b></span><br>
+  Prévalence chez les adultes (20–79 ans) : <b>17,5 %</b><br>
+  Source : IDF Diabetes Atlas 2025
+  </p>
 
-    <p>
-    <span style="color:#1D3557;"><b>❤️ Hypertension</b></span><br>
-    Prevalence (18–69 years): <b>23.6%</b><br>
-    Source: WHO STEPS Survey
-    </p>
+  <p>
+  <span style="color:#1D3557;"><b>❤️ Hypertension artérielle</b></span><br>
+  Prévalence chez les adultes (18–69 ans) : <b>23,6 %</b><br>
+  Source : Enquête STEPwise (OMS)
+  </p>
 
-    <p>
-    <span style="color:#2A9D8F;"><b>🎯 Blood Pressure Control</b></span><br>
-    Controlled BP among hypertensive patients:
-    <b>17.4%</b><br>
-    Source: PACT II (2021)
-    </p>
+  <p>
+  <span style="color:#2A9D8F;"><b>🎯 Contrôle de la tension artérielle</b></span><br>
+  Patients hypertendus atteignant l'objectif tensionnel : <b>17,4 %</b><br>
+  Source : Étude PACT II (2021)
+  </p>
 
-  </div>
-  `
+</div>
+`
 }
 ];
 
