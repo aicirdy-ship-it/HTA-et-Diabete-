@@ -69,7 +69,7 @@ body {
 }
 
 .hta {
-    color: #E63946;
+    color: #1D3557;
     font-weight: bold;
 }
 
@@ -93,7 +93,7 @@ body {
 <div id="globeViz"></div>
 
 <div id="title-box">
-    <h2>Indicateurs de risque cardiométabolique en Algérie</h2>
+    <h2>🇩🇿 Indicateurs de risque cardiométabolique en Algérie</h2>
 </div>
 
 <div id="legend">
@@ -117,41 +117,6 @@ body {
         <b>17,4 %</b> atteignent la cible tensionnelle<br>
         Source : Étude PACT II (2021)
     </div>
-    </div>
-    <div id="infoBox" style="
-position:absolute;
-bottom:20px;
-left:20px;
-width:420px;
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.2);
-display:none;
-z-index:1000;
-">
-
-<h2>🇩🇿 Algérie</h2>
-
-<p>
-<b style="color:#E63946;">🩸 Diabète</b><br>
-Prévalence : 17,5 % (20–79 ans)<br>
-Source : IDF Diabetes Atlas 2025
-</p>
-
-<p>
-<b style="color:#E63946;">❤️ Hypertension artérielle</b><br>
-Prévalence : 23,6 % (18–69 ans)<br>
-Source : Enquête STEPwise (OMS)
-</p>
-
-<p>
-<b style="color:#2A9D8F;">🎯 Contrôle tensionnel</b><br>
-17,4 % atteignent la cible tensionnelle<br>
-Source : Étude PACT II (2021)
-</p>
-
-</div>
 
 </div>
 
@@ -161,6 +126,55 @@ Source : Étude PACT II (2021)
 // Données Algérie
 // =====================
 
+const data = [
+{
+    lat: 28.0339,
+    lng: 1.6596,
+    size: 0.8,
+    color: "#E63946",
+
+    label: `
+    <div style="font-size:18px;line-height:1.6;max-width:350px;">
+
+        <h2>🇩🇿 Algérie</h2>
+
+        <p>
+        <span style="color:#E63946;">
+        <b>🩸 Diabète</b>
+        </span><br>
+
+        Prévalence chez les adultes (20–79 ans) :
+        <b>17,5 %</b><br>
+
+        Source : IDF Diabetes Atlas 2025
+        </p>
+
+        <p>
+        <span style="color:#1D3557;">
+        <b>❤️ Hypertension artérielle</b>
+        </span><br>
+
+        Prévalence chez les adultes (18–69 ans) :
+        <b>23,6 %</b><br>
+
+        Source : Enquête STEPwise (OMS)
+        </p>
+
+        <p>
+        <span style="color:#2A9D8F;">
+        <b>🎯 Contrôle tensionnel</b>
+        </span><br>
+
+        Patients atteignant la cible tensionnelle :
+        <b>17,4 %</b><br>
+
+        Source : Étude PACT II (2021)
+        </p>
+
+    </div>
+    `
+}
+];
 
 // =====================
 // Création du globe
@@ -175,7 +189,18 @@ const globe = Globe()
 
 .backgroundColor('#DCEEFF')
 
-;
+.pointsData(data)
+
+.pointLat('lat')
+.pointLng('lng')
+
+.pointRadius('size')
+
+.pointAltitude(0.15)
+
+.pointColor('color')
+
+.pointLabel('label');
 
 // =====================
 // Vue centrée Algérie
@@ -203,7 +228,7 @@ fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/wor
 
     .polygonCapColor(feature =>
         feature.properties.name === 'Algeria'
-            ? 'rgba(230,57,70,0.6)'
+            ? 'rgba(230,57,70,0.65)'
             : 'rgba(0,0,0,0)'
     )
 
@@ -217,26 +242,9 @@ fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/wor
 
     .polygonAltitude(feature =>
         feature.properties.name === 'Algeria'
-            ? 0.03
+            ? 0.04
             : 0
-    )
-
-    .onPolygonClick(feature => {
-
-        if (feature.properties.name === 'Algeria') {
-
-            document.getElementById('infoBox').style.display = 'block';
-
-            globe.pointOfView(
-                {
-                    lat: 28.0339,
-                    lng: 1.6596,
-                    altitude: 1.5
-                },
-                1000
-            );
-        }
-    });
+    );
 })
 .catch(error => console.error(error));
 
