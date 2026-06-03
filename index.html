@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Cardiometabolic Risk Indicators - Algeria</title>
+<title>Indicateurs de risque cardiométabolique en Algerie</title>
 
 <script src="https://unpkg.com/globe.gl"></script>
 
@@ -17,6 +17,29 @@ body {
   width: 100vw;
   height: 100vh;
 }
+  fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
+  .then(res => res.json())
+  .then(countries => {
+
+    globe
+      .polygonsData(countries.features)
+      .polygonCapColor(d =>
+        d.properties.name === 'Algeria'
+          ? 'rgba(230,57,70,0.6)'
+          : 'rgba(0,0,0,0)'
+      )
+      .polygonSideColor(() => 'rgba(0,0,0,0)')
+      .polygonStrokeColor(d =>
+        d.properties.name === 'Algeria'
+          ? '#E63946'
+          : 'rgba(255,255,255,0.15)'
+      )
+      .polygonAltitude(d =>
+        d.properties.name === 'Algeria'
+          ? 0.02
+          : 0
+      );
+  });
 
 #title-box {
   position: absolute;
@@ -75,12 +98,8 @@ body {
 <div id="globeViz"></div>
 
 <div id="title-box">
-<h2>Cardiometabolic Risk Indicators in Algeria</h2>
-<p>
-Interactive visualization of diabetes prevalence,
-hypertension prevalence and blood pressure control rates
-among Algerian adults.
-</p>
+<h2>Indicateurs de risque cardiométabolique en Algerie</h2>
+
 </div>
 
 <div id="legend">
@@ -143,8 +162,8 @@ const data = [
 
 const globe = Globe()
 (document.getElementById('globeViz'))
-.globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-.backgroundColor('#000000')
+.globeImageUrl('//unpkg.com/three-globe/example/img/earth-day.jpg')
+.backgroundColor('#DCEEFF')
 .pointsData(data)
 .pointLat('lat')
 .pointLng('lng')
